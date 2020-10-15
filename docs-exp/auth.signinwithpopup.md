@@ -28,3 +28,19 @@ Promise&lt;externs.[UserCredential](./auth-types.usercredential.md)<!-- -->&gt;
 
 If succeeds, returns the signed in user along with the provider's credential. If sign in was unsuccessful, returns an error object containing additional information about the error.
 
+## Example
+
+
+```javascript
+// Sign in using a popup.
+const provider = new FacebookAuthProvider();
+const result = await signInWithPopup(auth, provider);
+
+// The signed-in user info.
+const user = result.user;
+// This gives you a Facebook Access Token.
+const credential = provider.credentialFromResult(auth, result);
+const token = credential.accessToken;
+
+```
+

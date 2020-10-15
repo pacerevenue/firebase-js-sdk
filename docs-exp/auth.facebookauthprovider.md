@@ -18,17 +18,21 @@ export declare class FacebookAuthProvider extends OAuthProvider
 
 ```javascript
 // Sign in using a redirect.
-const result = await getRedirectResult(auth);
-if (result.credential) {
-  // This gives you a Google Access Token.
-  const token = result.credential.accessToken;
-}
-const user = result.user;
-
-// Start a sign in process for an unauthenticated user.
 const provider = new FacebookAuthProvider();
+// Start a sign in process for an unauthenticated user.
 provider.addScope('user_birthday');
 await signInWithRedirect(auth, provider);
+// This will trigger a full page redirect away from your app
+
+// After returning from the redirect when your app initializes you can obtain the result
+const result = await getRedirectResult(auth);
+if (result) {
+  // This is the signed-in user
+  const user = result.user;
+  // This gives you a Facebook Access Token.
+  const credential = provider.credentialFromResult(auth, result);
+  const token = credential.accessToken;
+}
 
 ```
 
@@ -40,10 +44,12 @@ await signInWithRedirect(auth, provider);
 const provider = new FacebookAuthProvider();
 provider.addScope('user_birthday');
 const result = await signInWithPopup(auth, provider);
-// This gives you a Facebook Access Token.
-const token = result.credential.accessToken;
+
 // The signed-in user info.
 const user = result.user;
+// This gives you a Facebook Access Token.
+const credential = provider.credentialFromResult(auth, result);
+const token = credential.accessToken;
 
 ```
 
@@ -60,6 +66,6 @@ const user = result.user;
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [credential(accessToken)](./auth.facebookauthprovider.credential.md) | <code>static</code> | Creates a credential for Facebook. |
-|  [credentialFromError(error)](./auth.facebookauthprovider.credentialfromerror.md) | <code>static</code> |  |
-|  [credentialFromResult(userCredential)](./auth.facebookauthprovider.credentialfromresult.md) | <code>static</code> |  |
+|  [credentialFromError(error)](./auth.facebookauthprovider.credentialfromerror.md) | <code>static</code> | Used to extract the underlying [OAuthCredential](./auth.oauthcredential.md) from a [AuthError](./auth-types.autherror.md) which was thrown during a sign-in, link, or reauthenticate operation. |
+|  [credentialFromResult(userCredential)](./auth.facebookauthprovider.credentialfromresult.md) | <code>static</code> | Used to extract the underlying [OAuthCredential](./auth.oauthcredential.md) from a [UserCredential](./auth-types.usercredential.md)<!-- -->. |
 

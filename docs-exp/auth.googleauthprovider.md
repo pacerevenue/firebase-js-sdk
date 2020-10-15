@@ -17,19 +17,23 @@ export declare class GoogleAuthProvider extends OAuthProvider
 
 
 ```javascript
-// Using a redirect.
-const result = getRedirectResult(auth);
-if (result.credential) {
-  // This gives you a Google Access Token.
-  const token = result.credential.accessToken;
-}
-const user = result.user;
-
+// Sign in using a redirect.
+const provider = new GoogleAuthProvider();
 // Start a sign in process for an unauthenticated user.
-var provider = new GoogleAuthProvider();
 provider.addScope('profile');
 provider.addScope('email');
-aiwait signInWithRedirect(auth, provider);
+await signInWithRedirect(auth, provider);
+// This will trigger a full page redirect away from your app
+
+// After returning from the redirect when your app initializes you can obtain the result
+const result = await getRedirectResult(auth);
+if (result) {
+  // This is the signed-in user
+  const user = result.user;
+  // This gives you a Google Access Token.
+  const credential = provider.credentialFromResult(auth, result);
+  const token = credential.accessToken;
+}
 
 ```
 
@@ -42,10 +46,12 @@ const provider = new GoogleAuthProvider();
 provider.addScope('profile');
 provider.addScope('email');
 const result = await signInWithPopup(auth, provider);
-// This gives you a Google Access Token.
-const token = result.credential.accessToken;
+
 // The signed-in user info.
 const user = result.user;
+// This gives you a Google Access Token.
+const credential = provider.credentialFromResult(auth, result);
+const token = credential.accessToken;
 
 ```
 
@@ -62,6 +68,6 @@ const user = result.user;
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [credential(idToken, accessToken)](./auth.googleauthprovider.credential.md) | <code>static</code> | Creates a credential for Google. At least one of ID token and access token is required. |
-|  [credentialFromError(error)](./auth.googleauthprovider.credentialfromerror.md) | <code>static</code> |  |
-|  [credentialFromResult(userCredential)](./auth.googleauthprovider.credentialfromresult.md) | <code>static</code> |  |
+|  [credentialFromError(error)](./auth.googleauthprovider.credentialfromerror.md) | <code>static</code> | Used to extract the underlying [OAuthCredential](./auth.oauthcredential.md) from a [AuthError](./auth-types.autherror.md) which was thrown during a sign-in, link, or reauthenticate operation. |
+|  [credentialFromResult(userCredential)](./auth.googleauthprovider.credentialfromresult.md) | <code>static</code> | Used to extract the underlying [OAuthCredential](./auth.oauthcredential.md) from a [UserCredential](./auth-types.usercredential.md)<!-- -->. |
 

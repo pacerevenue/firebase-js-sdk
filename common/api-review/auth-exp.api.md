@@ -318,9 +318,7 @@ export class EmailAuthProvider implements externs.EmailAuthProvider {
 // @public
 export class FacebookAuthProvider extends OAuthProvider {
     static credential(accessToken: string): externs.OAuthCredential;
-    // (undocumented)
     static credentialFromError(error: FirebaseError): externs.OAuthCredential | null;
-    // (undocumented)
     static credentialFromResult(userCredential: externs.UserCredential): externs.OAuthCredential | null;
     static readonly FACEBOOK_SIGN_IN_METHOD = externs.SignInMethod.FACEBOOK;
     static readonly PROVIDER_ID = externs.ProviderId.FACEBOOK;
@@ -351,9 +349,7 @@ export function getRedirectResult(auth: externs.Auth, resolver?: externs.PopupRe
 // @public
 export class GithubAuthProvider extends OAuthProvider {
     static credential(accessToken: string): externs.OAuthCredential;
-    // (undocumented)
     static credentialFromError(error: FirebaseError): externs.OAuthCredential | null;
-    // (undocumented)
     static credentialFromResult(userCredential: externs.UserCredential): externs.OAuthCredential | null;
     static readonly GITHUB_SIGN_IN_METHOD = externs.SignInMethod.GITHUB;
     static readonly PROVIDER_ID = externs.ProviderId.GITHUB;
@@ -363,9 +359,7 @@ export class GithubAuthProvider extends OAuthProvider {
 // @public
 export class GoogleAuthProvider extends OAuthProvider {
     static credential(idToken?: string | null, accessToken?: string | null): externs.OAuthCredential;
-    // (undocumented)
     static credentialFromError(error: FirebaseError): externs.OAuthCredential | null;
-    // (undocumented)
     static credentialFromResult(userCredential: externs.UserCredential): externs.OAuthCredential | null;
     static readonly GOOGLE_SIGN_IN_METHOD = externs.SignInMethod.GOOGLE;
     static readonly PROVIDER_ID = externs.ProviderId.GOOGLE;
@@ -584,9 +578,7 @@ export function signOut(auth: externs.Auth): Promise<void>;
 // @public
 export class TwitterAuthProvider extends OAuthProvider {
     static credential(token: string, secret: string): externs.OAuthCredential;
-    // (undocumented)
     static credentialFromError(error: FirebaseError): externs.OAuthCredential | null;
-    // (undocumented)
     static credentialFromResult(userCredential: externs.UserCredential): externs.OAuthCredential | null;
     // (undocumented)
     static readonly PROVIDER_ID = externs.ProviderId.TWITTER;

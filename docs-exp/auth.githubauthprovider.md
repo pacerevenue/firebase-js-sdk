@@ -21,18 +21,22 @@ GitHub requires an OAuth 2.0 redirect, so you can either handle the redirect dir
 
 
 ```javascript
-// Using a redirect.
-const result = await getRedirectResult(auth);
-if (result.credential) {
-  // This gives you a GitHub Access Token.
-  const token = result.credential.accessToken;
-}
-const user = result.user;
-
-// Start a sign in process for an unauthenticated user.
+// Sign in using a redirect.
 const provider = new GithubAuthProvider();
+// Start a sign in process for an unauthenticated user.
 provider.addScope('repo');
 await signInWithRedirect(auth, provider);
+// This will trigger a full page redirect away from your app
+
+// After returning from the redirect when your app initializes you can obtain the result
+const result = await getRedirectResult(auth);
+if (result) {
+  // This is the signed-in user
+  const user = result.user;
+  // This gives you a Github Access Token.
+  const credential = provider.credentialFromResult(auth, result);
+  const token = credential.accessToken;
+}
 
 ```
 
@@ -40,14 +44,16 @@ await signInWithRedirect(auth, provider);
 
 
 ```javascript
-// With popup.
+// Sign in using a popup.
 const provider = new GithubAuthProvider();
 provider.addScope('repo');
 const result = await signInWithPopup(auth, provider);
-// This gives you a GitHub Access Token.
-const token = result.credential.accessToken;
+
 // The signed-in user info.
 const user = result.user;
+// This gives you a Github Access Token.
+const credential = provider.credentialFromResult(auth, result);
+const token = credential.accessToken;
 
 ```
 
@@ -64,6 +70,6 @@ const user = result.user;
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [credential(accessToken)](./auth.githubauthprovider.credential.md) | <code>static</code> | Creates a credential for Github. |
-|  [credentialFromError(error)](./auth.githubauthprovider.credentialfromerror.md) | <code>static</code> |  |
-|  [credentialFromResult(userCredential)](./auth.githubauthprovider.credentialfromresult.md) | <code>static</code> |  |
+|  [credentialFromError(error)](./auth.githubauthprovider.credentialfromerror.md) | <code>static</code> | Used to extract the underlying [OAuthCredential](./auth.oauthcredential.md) from a [AuthError](./auth-types.autherror.md) which was thrown during a sign-in, link, or reauthenticate operation. |
+|  [credentialFromResult(userCredential)](./auth.githubauthprovider.credentialfromresult.md) | <code>static</code> | Used to extract the underlying [OAuthCredential](./auth.oauthcredential.md) from a [UserCredential](./auth-types.usercredential.md)<!-- -->. |
 

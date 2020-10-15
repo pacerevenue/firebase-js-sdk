@@ -31,23 +31,23 @@ If sign-in succeeded, returns the signed in user. If sign-in was unsuccessful, f
 
 
 ```javascript
-// First, we perform the signInWithRedirect.
-// Creates the provider.
+// Sign in using a redirect.
 const provider = new FacebookAuthProvider();
 // You can add additional scopes to the provider:
-provider.addScope('email');
-provider.addScope('user_friends');
-// Sign in with redirect:
-await signInWithRedirect(auth, provider)
-////////////////////////////////////////////////////////////
-// The user is redirected to the provider's sign in flow...
-////////////////////////////////////////////////////////////
-// Then redirected back to the app, where we check the redirect result:
+provider.addScope('user_birthday');
+// Start a sign in process for an unauthenticated user.
+await signInWithRedirect(auth, provider);
+// This will trigger a full page redirect away from your app
+
+// After returning from the redirect when your app initializes you can obtain the result
 const result = await getRedirectResult(auth);
-// The Firebase User instance:
-const user = result.user;
-// The Facebook AuthCredential containing the Facebook access token:
-const credential = result.credential;
+if (result) {
+  // This is the signed-in user
+  const user = result.user;
+  // This gives you a Facebook Access Token.
+  const credential = provider.credentialFromResult(auth, result);
+  const token = credential.accessToken;
+}
 // As this API can be used for sign-in, linking and reauthentication,
 // check the operationType to determine what triggered this redirect
 // operation.

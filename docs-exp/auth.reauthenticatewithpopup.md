@@ -28,3 +28,15 @@ Promise&lt;externs.[UserCredential](./auth-types.usercredential.md)<!-- -->&gt;
 
 If the reauthentication is successful, the returned result will contain the user and the provider's credential.
 
+## Example
+
+
+```javascript
+// Sign in using a popup.
+const provider = new FacebookAuthProvider();
+const result = await signInWithPopup(auth, provider);
+// Reauthenticate using a popup.
+await reauthenticateWithPopup(result.user, provider);
+
+```
+

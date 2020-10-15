@@ -28,3 +28,15 @@ Promise&lt;externs.[UserCredential](./auth-types.usercredential.md)<!-- -->&gt;
 
 If the linking is successful, the returned result will contain the user and the provider's credential.
 
+## Example
+
+
+```javascript
+// Sign in using some other provider.
+const result = await signInWithEmailAndPassword(auth, email, password);
+// Link using a popup.
+const provider = new FacebookAuthProvider();
+await linkWithPopup(result.user, provider);
+
+```
+

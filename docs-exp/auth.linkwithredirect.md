@@ -24,3 +24,19 @@ export declare function linkWithRedirect(user: externs.User, provider: externs.A
 
 Promise&lt;never&gt;
 
+## Example
+
+
+```javascript
+// Sign in using some other provider.
+const result = await signInWithEmailAndPassword(auth, email, password);
+// Link using a redirect.
+const provider = new FacebookAuthProvider();
+await linkWithRedirect(result.user, provider);
+// This will trigger a full page redirect away from your app
+
+// After returning from the redirect when your app initializes you can obtain the result
+const result = await getRedirectResult(auth);
+
+```
+
