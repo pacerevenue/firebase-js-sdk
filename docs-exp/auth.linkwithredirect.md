@@ -4,19 +4,21 @@
 
 ## linkWithRedirect() function
 
+Links the [OAuthProvider](./auth.oauthprovider.md) to the user account using a full-page redirect flow.
+
 <b>Signature:</b>
 
 ```typescript
-export declare function linkWithRedirect(userExtern: externs.User, provider: externs.AuthProvider, resolverExtern?: externs.PopupRedirectResolver): Promise<never>;
+export declare function linkWithRedirect(user: externs.User, provider: externs.AuthProvider, resolver?: externs.PopupRedirectResolver): Promise<never>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  userExtern | externs.[User](./auth-types.user.md) |  |
-|  provider | externs.[AuthProvider](./auth-types.authprovider.md) |  |
-|  resolverExtern | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) |  |
+|  user | externs.[User](./auth-types.user.md) | The Auth instance. |
+|  provider | externs.[AuthProvider](./auth-types.authprovider.md) | The provider to authenticate. The provider has to be an [OAuthProvider](./auth.oauthprovider.md)<!-- -->. Non-OAuth providers like [EmailAuthProvider](./auth.emailauthprovider.md) will throw an error. |
+|  resolver | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) | An instance of [PopupRedirectResolver](./auth-types.popupredirectresolver.md)<!-- -->. |
 
 <b>Returns:</b>
 

@@ -4,6 +4,8 @@
 
 ## FacebookAuthProvider.providerId property
 
+Always set to [ProviderId.FACEBOOK](./auth-types.providerid.facebook.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript

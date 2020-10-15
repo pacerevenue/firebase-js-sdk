@@ -4,6 +4,8 @@
 
 ## GoogleAuthProvider.providerId property
 
+Always set to [ProviderId.GOOGLE](./auth-types.providerid.google.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript

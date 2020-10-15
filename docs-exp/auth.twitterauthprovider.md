@@ -4,12 +4,48 @@
 
 ## TwitterAuthProvider class
 
+Provider for generating an [OAuthCredential](./auth.oauthcredential.md) for [ProviderId.TWITTER](./auth-types.providerid.twitter.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript
 export declare class TwitterAuthProvider extends OAuthProvider 
 ```
 <b>Extends:</b> [OAuthProvider](./auth.oauthprovider.md)
+
+## Example 1
+
+
+```javascript
+// Using a redirect.
+const result = await getRedirectResult(auth);
+if (result.credential) {
+  // For accessing the Twitter API.
+  const token = result.credential.accessToken;
+  const secret = result.credential.secret;
+}
+const user = result.user;
+
+// Start a sign in process for an unauthenticated user.
+const provider = new TwitterAuthProvider();
+await signInWithRedirect(auth, provider);
+
+```
+
+## Example 2
+
+
+```javascript
+// Using a popup.
+const provider = new TwitterAuthProvider();
+const result = await signInWithPopup(auth, provider);
+// For accessing the Twitter API.
+const token = result.credential.accessToken;
+const secret = result.credential.secret;
+// The signed-in user info.
+const user = result.user;
+
+```
 
 ## Properties
 
@@ -23,7 +59,7 @@ export declare class TwitterAuthProvider extends OAuthProvider
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [credential(token, secret)](./auth.twitterauthprovider.credential.md) | <code>static</code> |  |
+|  [credential(token, secret)](./auth.twitterauthprovider.credential.md) | <code>static</code> | Creates a credential for Twitter. |
 |  [credentialFromError(error)](./auth.twitterauthprovider.credentialfromerror.md) | <code>static</code> |  |
 |  [credentialFromResult(userCredential)](./auth.twitterauthprovider.credentialfromresult.md) | <code>static</code> |  |
 

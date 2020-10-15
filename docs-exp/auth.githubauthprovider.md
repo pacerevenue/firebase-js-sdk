@@ -4,6 +4,8 @@
 
 ## GithubAuthProvider class
 
+Provider for generating an [OAuthCredential](./auth.oauthcredential.md) for [ProviderId.GITHUB](./auth-types.providerid.github.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript
@@ -11,19 +13,57 @@ export declare class GithubAuthProvider extends OAuthProvider
 ```
 <b>Extends:</b> [OAuthProvider](./auth.oauthprovider.md)
 
+## Remarks
+
+GitHub requires an OAuth 2.0 redirect, so you can either handle the redirect directly, or use the [signInWithPopup()](./auth.signinwithpopup.md) handler:
+
+## Example 1
+
+
+```javascript
+// Using a redirect.
+const result = await getRedirectResult(auth);
+if (result.credential) {
+  // This gives you a GitHub Access Token.
+  const token = result.credential.accessToken;
+}
+const user = result.user;
+
+// Start a sign in process for an unauthenticated user.
+const provider = new GithubAuthProvider();
+provider.addScope('repo');
+await signInWithRedirect(auth, provider);
+
+```
+
+## Example 2
+
+
+```javascript
+// With popup.
+const provider = new GithubAuthProvider();
+provider.addScope('repo');
+const result = await signInWithPopup(auth, provider);
+// This gives you a GitHub Access Token.
+const token = result.credential.accessToken;
+// The signed-in user info.
+const user = result.user;
+
+```
+
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [GITHUB\_SIGN\_IN\_METHOD](./auth.githubauthprovider.github_sign_in_method.md) | <code>static</code> | (not declared) |  |
-|  [PROVIDER\_ID](./auth.githubauthprovider.provider_id.md) | <code>static</code> | (not declared) |  |
-|  [providerId](./auth.githubauthprovider.providerid.md) |  | (not declared) |  |
+|  [GITHUB\_SIGN\_IN\_METHOD](./auth.githubauthprovider.github_sign_in_method.md) | <code>static</code> | (not declared) | Always set to [SignInMethod.GITHUB](./auth-types.signinmethod.github.md)<!-- -->. |
+|  [PROVIDER\_ID](./auth.githubauthprovider.provider_id.md) | <code>static</code> | (not declared) | Always set to [ProviderId.GITHUB](./auth-types.providerid.github.md)<!-- -->. |
+|  [providerId](./auth.githubauthprovider.providerid.md) |  | (not declared) | Always set to [ProviderId.GITHUB](./auth-types.providerid.github.md)<!-- -->. |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [credential(accessToken)](./auth.githubauthprovider.credential.md) | <code>static</code> |  |
+|  [credential(accessToken)](./auth.githubauthprovider.credential.md) | <code>static</code> | Creates a credential for Github. |
 |  [credentialFromError(error)](./auth.githubauthprovider.credentialfromerror.md) | <code>static</code> |  |
 |  [credentialFromResult(userCredential)](./auth.githubauthprovider.credentialfromresult.md) | <code>static</code> |  |
 

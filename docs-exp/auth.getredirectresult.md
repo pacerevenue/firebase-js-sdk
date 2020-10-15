@@ -4,20 +4,54 @@
 
 ## getRedirectResult() function
 
+Returns a [UserCredential](./auth-types.usercredential.md) from the redirect-based sign-in flow.
+
 <b>Signature:</b>
 
 ```typescript
-export declare function getRedirectResult(authExtern: externs.Auth, resolverExtern?: externs.PopupRedirectResolver): Promise<externs.UserCredential | null>;
+export declare function getRedirectResult(auth: externs.Auth, resolver?: externs.PopupRedirectResolver): Promise<externs.UserCredential | null>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  authExtern | externs.[Auth](./auth-types.auth.md) |  |
-|  resolverExtern | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) |  |
+|  auth | externs.[Auth](./auth-types.auth.md) | The Auth instance. |
+|  resolver | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) | An instance of [PopupRedirectResolver](./auth-types.popupredirectresolver.md)<!-- -->. |
 
 <b>Returns:</b>
 
 Promise&lt;externs.[UserCredential](./auth-types.usercredential.md) \| null&gt;
+
+## Remarks
+
+If sign-in succeeded, returns the signed in user. If sign-in was unsuccessful, fails with an error. If no redirect operation was called, returns a [UserCredential](./auth-types.usercredential.md) with a null `user`<!-- -->.
+
+## Example
+
+
+```javascript
+// First, we perform the signInWithRedirect.
+// Creates the provider.
+const provider = new FacebookAuthProvider();
+// You can add additional scopes to the provider:
+provider.addScope('email');
+provider.addScope('user_friends');
+// Sign in with redirect:
+await signInWithRedirect(auth, provider)
+////////////////////////////////////////////////////////////
+// The user is redirected to the provider's sign in flow...
+////////////////////////////////////////////////////////////
+// Then redirected back to the app, where we check the redirect result:
+const result = await getRedirectResult(auth);
+// The Firebase User instance:
+const user = result.user;
+// The Facebook AuthCredential containing the Facebook access token:
+const credential = result.credential;
+// As this API can be used for sign-in, linking and reauthentication,
+// check the operationType to determine what triggered this redirect
+// operation.
+const operationType = result.operationType;
+
+```
 

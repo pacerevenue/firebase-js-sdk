@@ -4,21 +4,27 @@
 
 ## signInWithPopup() function
 
+Authenticates a Firebase client using a popup-based OAuth authentication flow.
+
 <b>Signature:</b>
 
 ```typescript
-export declare function signInWithPopup(authExtern: externs.Auth, provider: externs.AuthProvider, resolverExtern?: externs.PopupRedirectResolver): Promise<externs.UserCredential>;
+export declare function signInWithPopup(auth: externs.Auth, provider: externs.AuthProvider, resolver?: externs.PopupRedirectResolver): Promise<externs.UserCredential>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  authExtern | externs.[Auth](./auth-types.auth.md) |  |
-|  provider | externs.[AuthProvider](./auth-types.authprovider.md) |  |
-|  resolverExtern | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) |  |
+|  auth | externs.[Auth](./auth-types.auth.md) | The Auth instance. |
+|  provider | externs.[AuthProvider](./auth-types.authprovider.md) | The provider to authenticate. The provider has to be an [OAuthProvider](./auth.oauthprovider.md)<!-- -->. Non-OAuth providers like [EmailAuthProvider](./auth.emailauthprovider.md) will throw an error. |
+|  resolver | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) | An instance of [PopupRedirectResolver](./auth-types.popupredirectresolver.md)<!-- -->. |
 
 <b>Returns:</b>
 
 Promise&lt;externs.[UserCredential](./auth-types.usercredential.md)<!-- -->&gt;
+
+## Remarks
+
+If succeeds, returns the signed in user along with the provider's credential. If sign in was unsuccessful, returns an error object containing additional information about the error.
 

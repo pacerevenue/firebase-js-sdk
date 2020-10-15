@@ -19,6 +19,7 @@ import { ActionCodeSettings } from '@firebase/auth-types-exp';
 
 import { GetOobCodeRequest } from '../../api/authentication/email_and_password';
 
+/** @internal */
 export function setActionCodeSettingsOnRequest(
   request: GetOobCodeRequest,
   actionCodeSettings: ActionCodeSettings

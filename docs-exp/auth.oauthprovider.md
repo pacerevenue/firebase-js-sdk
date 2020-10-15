@@ -4,6 +4,8 @@
 
 ## OAuthProvider class
 
+Provider for generating generic [OAuthCredential](./auth.oauthcredential.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript
@@ -11,28 +13,63 @@ export declare class OAuthProvider implements externs.AuthProvider
 ```
 <b>Implements:</b> externs.[AuthProvider](./auth-types.authprovider.md)
 
+## Example 1
+
+Using a redirect.
+
+```javascript
+const result = await getRedirectResult(auth);
+if (result.credential) {
+  // This gives you the OAuth Access Token for that provider.
+  const token = result.credential.accessToken;
+}
+const user = result.user;
+
+// Start a sign in process for an unauthenticated user.
+const provider = new OAuthProvider('google.com');
+provider.addScope('profile');
+provider.addScope('email');
+await signInWithRedirect(auth, provider);
+
+```
+
+## Example 2
+
+Using a popup.
+
+```javascript
+const provider = new OAuthProvider('google.com');
+provider.addScope('profile');
+provider.addScope('email');
+const result = await signInWithPopup(auth, provider);
+// This gives you the OAuth Access Token for that provider.
+const token = result.credential.accessToken;
+// The signed-in user info.
+const user = result.user;
+
+```
+
 ## Constructors
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(providerId)](./auth.oauthprovider._constructor_.md) |  | Constructs a new instance of the <code>OAuthProvider</code> class |
+|  [(constructor)(providerId)](./auth.oauthprovider._constructor_.md) |  | Constructor for generic OAuth providers. |
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [defaultLanguageCode](./auth.oauthprovider.defaultlanguagecode.md) |  | string \| null |  |
 |  [providerId](./auth.oauthprovider.providerid.md) |  | string |  |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [addScope(scope)](./auth.oauthprovider.addscope.md) |  |  |
-|  [credential(params)](./auth.oauthprovider.credential.md) |  |  |
+|  [addScope(scope)](./auth.oauthprovider.addscope.md) |  | Add an OAuth scope to the credential. |
+|  [credential(params)](./auth.oauthprovider.credential.md) |  | Creates a [OAuthCredential](./auth.oauthcredential.md) from a generic OAuth provider's access token or ID token. |
 |  [credentialFromJSON(json)](./auth.oauthprovider.credentialfromjson.md) | <code>static</code> |  |
-|  [getCustomParameters()](./auth.oauthprovider.getcustomparameters.md) |  |  |
-|  [getScopes()](./auth.oauthprovider.getscopes.md) |  |  |
-|  [setCustomParameters(customOAuthParameters)](./auth.oauthprovider.setcustomparameters.md) |  |  |
-|  [setDefaultLanguage(languageCode)](./auth.oauthprovider.setdefaultlanguage.md) |  |  |
+|  [getCustomParameters()](./auth.oauthprovider.getcustomparameters.md) |  | Retrieve the current list of [CustomParameters](./auth.customparameters.md)<!-- -->. |
+|  [getScopes()](./auth.oauthprovider.getscopes.md) |  | Retrieve the current list of OAuth scopes. |
+|  [setCustomParameters(customOAuthParameters)](./auth.oauthprovider.setcustomparameters.md) |  | Sets the OAuth custom parameters to pass in an OAuth request for popup and redirect sign-in operations. |
+|  [setDefaultLanguage(languageCode)](./auth.oauthprovider.setdefaultlanguage.md) |  | Set the language gode. |
 

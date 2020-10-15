@@ -4,6 +4,8 @@
 
 ## FacebookAuthProvider class
 
+Provider for generating an [OAuthCredential](./auth.oauthcredential.md) for [ProviderId.FACEBOOK](./auth-types.providerid.facebook.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript
@@ -11,19 +13,53 @@ export declare class FacebookAuthProvider extends OAuthProvider
 ```
 <b>Extends:</b> [OAuthProvider](./auth.oauthprovider.md)
 
+## Example 1
+
+
+```javascript
+// Sign in using a redirect.
+const result = await getRedirectResult(auth);
+if (result.credential) {
+  // This gives you a Google Access Token.
+  const token = result.credential.accessToken;
+}
+const user = result.user;
+
+// Start a sign in process for an unauthenticated user.
+const provider = new FacebookAuthProvider();
+provider.addScope('user_birthday');
+await signInWithRedirect(auth, provider);
+
+```
+
+## Example 2
+
+
+```javascript
+// Sign in using a popup.
+const provider = new FacebookAuthProvider();
+provider.addScope('user_birthday');
+const result = await signInWithPopup(auth, provider);
+// This gives you a Facebook Access Token.
+const token = result.credential.accessToken;
+// The signed-in user info.
+const user = result.user;
+
+```
+
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [FACEBOOK\_SIGN\_IN\_METHOD](./auth.facebookauthprovider.facebook_sign_in_method.md) | <code>static</code> | (not declared) |  |
-|  [PROVIDER\_ID](./auth.facebookauthprovider.provider_id.md) | <code>static</code> | (not declared) |  |
-|  [providerId](./auth.facebookauthprovider.providerid.md) |  | (not declared) |  |
+|  [FACEBOOK\_SIGN\_IN\_METHOD](./auth.facebookauthprovider.facebook_sign_in_method.md) | <code>static</code> | (not declared) | Always set to [SignInMethod.FACEBOOK](./auth-types.signinmethod.facebook.md)<!-- -->. |
+|  [PROVIDER\_ID](./auth.facebookauthprovider.provider_id.md) | <code>static</code> | (not declared) | Always set to [ProviderId.FACEBOOK](./auth-types.providerid.facebook.md)<!-- -->. |
+|  [providerId](./auth.facebookauthprovider.providerid.md) |  | (not declared) | Always set to [ProviderId.FACEBOOK](./auth-types.providerid.facebook.md)<!-- -->. |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [credential(accessToken)](./auth.facebookauthprovider.credential.md) | <code>static</code> |  |
+|  [credential(accessToken)](./auth.facebookauthprovider.credential.md) | <code>static</code> | Creates a credential for Facebook. |
 |  [credentialFromError(error)](./auth.facebookauthprovider.credentialfromerror.md) | <code>static</code> |  |
 |  [credentialFromResult(userCredential)](./auth.facebookauthprovider.credentialfromresult.md) | <code>static</code> |  |
 

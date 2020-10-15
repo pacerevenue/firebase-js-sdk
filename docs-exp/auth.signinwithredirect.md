@@ -4,21 +4,27 @@
 
 ## signInWithRedirect() function
 
+Authenticates a Firebase client using a full-page redirect flow.
+
 <b>Signature:</b>
 
 ```typescript
-export declare function signInWithRedirect(authExtern: externs.Auth, provider: externs.AuthProvider, resolverExtern?: externs.PopupRedirectResolver): Promise<never>;
+export declare function signInWithRedirect(auth: externs.Auth, provider: externs.AuthProvider, resolver?: externs.PopupRedirectResolver): Promise<never>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  authExtern | externs.[Auth](./auth-types.auth.md) |  |
-|  provider | externs.[AuthProvider](./auth-types.authprovider.md) |  |
-|  resolverExtern | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) |  |
+|  auth | externs.[Auth](./auth-types.auth.md) | The Auth instance. |
+|  provider | externs.[AuthProvider](./auth-types.authprovider.md) | The provider to authenticate. The provider has to be an [OAuthProvider](./auth.oauthprovider.md)<!-- -->. Non-OAuth providers like [EmailAuthProvider](./auth.emailauthprovider.md) will throw an error. |
+|  resolver | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) | An instance of [PopupRedirectResolver](./auth-types.popupredirectresolver.md)<!-- -->. |
 
 <b>Returns:</b>
 
 Promise&lt;never&gt;
+
+## Remarks
+
+To handle the results and errors for this operation, refer to [getRedirectResult()](./auth.getredirectresult.md)<!-- -->.
 
