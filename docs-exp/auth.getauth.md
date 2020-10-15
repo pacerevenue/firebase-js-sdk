@@ -4,7 +4,7 @@
 
 ## getAuth() function
 
-Initializes an Auth instance with default depedencies.
+Initializes an Auth instance with platform specific default dependencies.
 
 <b>Signature:</b>
 

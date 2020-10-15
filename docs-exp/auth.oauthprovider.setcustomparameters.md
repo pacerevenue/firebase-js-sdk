@@ -24,5 +24,5 @@ externs.[AuthProvider](./auth-types.authprovider.md)
 
 ## Remarks
 
-For a detailed list, check the reserved required OAuth 2.0 parameters such as `client_id`<!-- -->, `redirect_uri`<!-- -->, `scope`<!-- -->, `response_type` and state are not allowed and will be ignored.
+For a detailed list, check the reserved required OAuth 2.0 parameters such as `client_id`<!-- -->, `redirect_uri`<!-- -->, `scope`<!-- -->, `response_type`<!-- -->, and `state` are not allowed and will be ignored.
 

@@ -17,7 +17,7 @@ export declare function getRedirectResult(auth: externs.Auth, resolver?: externs
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  auth | externs.[Auth](./auth-types.auth.md) | The Auth instance. |
-|  resolver | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) | An instance of [PopupRedirectResolver](./auth-types.popupredirectresolver.md)<!-- -->. |
+|  resolver | externs.[PopupRedirectResolver](./auth-types.popupredirectresolver.md) | An instance of [PopupRedirectResolver](./auth-types.popupredirectresolver.md)<!-- -->, optional if already supplied to [initializeAuth()](./auth.initializeauth.md) or provided by [getAuth()](./auth.getauth.md)<!-- -->. |
 
 <b>Returns:</b>
 

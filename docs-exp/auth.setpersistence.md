@@ -31,7 +31,7 @@ This makes it easy for a user signing in to specify whether their session should
 
 
 ```javascript
-auth.setPersistence(browserSessionPersistence);
+setPersistence(auth, browserSessionPersistence);
 
 ```
 

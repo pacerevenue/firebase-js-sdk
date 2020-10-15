@@ -428,10 +428,16 @@ export class OAuthCredential extends AuthCredential implements externs.OAuthCred
 }
 
 // @public
+export interface OAuthCredentialOptions {
+    accessToken?: string;
+    idToken?: string;
+    rawNonce?: string;
+}
+
+// @public
 export class OAuthProvider implements externs.AuthProvider {
     constructor(providerId: string);
     addScope(scope: string): externs.AuthProvider;
-    // Warning: (ae-forgotten-export) The symbol "OAuthCredentialOptions" needs to be exported by the entry point index.d.ts
     credential(params: OAuthCredentialOptions): externs.OAuthCredential;
     // (undocumented)
     static credentialFromJSON(json: object | string): externs.OAuthCredential;

@@ -4,7 +4,7 @@
 
 ## reload() function
 
-Refreshes the user, if signed in.
+Reloads user account data, if signed in.
 
 <b>Signature:</b>
 

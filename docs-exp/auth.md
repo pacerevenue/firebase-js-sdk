@@ -40,7 +40,7 @@
 |  [deleteUser(user)](./auth.deleteuser.md) | Deletes and signs out the user. |
 |  [fetchSignInMethodsForEmail(auth, email)](./auth.fetchsigninmethodsforemail.md) | Gets the list of possible sign in methods for the given email address. |
 |  [getAdditionalUserInfo(userCredential)](./auth.getadditionaluserinfo.md) | Extracts provider specific [AdditionalUserInfo](./auth-types.additionaluserinfo.md) for the given credential. |
-|  [getAuth(app)](./auth.getauth.md) | Initializes an Auth instance with default depedencies. |
+|  [getAuth(app)](./auth.getauth.md) | Initializes an Auth instance with platform specific default dependencies. |
 |  [getIdToken(user, forceRefresh)](./auth.getidtoken.md) | Returns a JSON Web Token (JWT) used to identify the user to a Firebase service. |
 |  [getIdTokenResult(user, forceRefresh)](./auth.getidtokenresult.md) | Returns a deserialized JSON Web Token (JWT) used to identitfy the user to a Firebase service. |
 |  [getMultiFactorResolver(auth, error)](./auth.getmultifactorresolver.md) | Provides a [MultiFactorResolver](./auth-types.multifactorresolver.md) suitable for completion of a multi-factor flow. |
@@ -59,7 +59,7 @@
 |  [reauthenticateWithPhoneNumber(user, phoneNumber, appVerifier)](./auth.reauthenticatewithphonenumber.md) | Re-authenticates a user using a fresh phne credential. |
 |  [reauthenticateWithPopup(user, provider, resolver)](./auth.reauthenticatewithpopup.md) | Reauthenticates the current user with the specified [OAuthProvider](./auth.oauthprovider.md) using a pop-up based OAuth flow. |
 |  [reauthenticateWithRedirect(user, provider, resolver)](./auth.reauthenticatewithredirect.md) | Reauthenticates the current user with the specified [OAuthProvider](./auth.oauthprovider.md) using a full-page redirect flow. |
-|  [reload(user)](./auth.reload.md) | Refreshes the user, if signed in. |
+|  [reload(user)](./auth.reload.md) | Reloads user account data, if signed in. |
 |  [sendEmailVerification(user, actionCodeSettings)](./auth.sendemailverification.md) | Sends a verification email to a user. |
 |  [sendPasswordResetEmail(auth, email, actionCodeSettings)](./auth.sendpasswordresetemail.md) | Sends a password reset email to the given email address. |
 |  [sendSignInLinkToEmail(auth, email, actionCodeSettings)](./auth.sendsigninlinktoemail.md) | Sends a sign-in email link to the user with the specified email. |
@@ -82,6 +82,12 @@
 |  [useDeviceLanguage(auth)](./auth.usedevicelanguage.md) | Sets the current language to the default device/browser preference. |
 |  [verifyBeforeUpdateEmail(user, newEmail, actionCodeSettings)](./auth.verifybeforeupdateemail.md) | Sends a verification email to a new email address. |
 |  [verifyPasswordResetCode(auth, code)](./auth.verifypasswordresetcode.md) | Checks a password reset code sent to the user by email or other out-of-band mechanism. |
+
+## Interfaces
+
+|  Interface | Description |
+|  --- | --- |
+|  [OAuthCredentialOptions](./auth.oauthcredentialoptions.md) | Defines the options for initializing an [OAuthCredential](./auth.oauthcredential.md)<!-- -->. |
 
 ## Variables
 
