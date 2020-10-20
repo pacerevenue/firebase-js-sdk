@@ -24,7 +24,7 @@ export const FETCH_TIMEOUT_MILLIS = 60 * 1000;
 export const DYNAMIC_CONFIG_URL =
   'https://firebase.googleapis.com/v1alpha/projects/-/apps/{app-id}/webConfig';
 
-export const GTAG_URL = 'https://www.googletagmanager.com/gtag/js';
+export const GTAG_URL = 'https://envoy.paceup.com/www.googletagmanager.com/gtag/js';
 
 export enum GtagCommand {
   EVENT = 'event',
